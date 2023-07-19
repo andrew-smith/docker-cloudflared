@@ -3,7 +3,7 @@ FROM --platform=$BUILDPLATFORM curlimages/curl AS downloader
 ARG TARGETPLATFORM
 
 # renovate: datasource=github-releases depName=cloudflare/cloudflared
-ARG CLOUDFLARED_VERSION=2022.9.1
+ARG CLOUDFLARED_VERSION=2023.7.1
 
 RUN download() { \
         URL="https://github.com/cloudflare/cloudflared/releases/download/${CLOUDFLARED_VERSION}/cloudflared-$1" && \
@@ -16,7 +16,7 @@ RUN download() { \
     #                               ^^ HACK try arm if no armv7 build
     
 
-FROM debian:11.5-slim
+FROM debian:12.0-slim
 
 VOLUME /config
 ENV PUID=65532
